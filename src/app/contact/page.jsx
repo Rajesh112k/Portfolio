@@ -8,14 +8,9 @@ import { FaFacebookF } from "react-icons/fa6";
 import { FaYoutube } from "react-icons/fa6";
 import { FaTwitter } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
-import { Twitter } from '@mui/icons-material';
 import { BsFillSendFill } from "react-icons/bs";
-import { useForm, ValidationError } from '@formspree/react';
-import Snackbar from '@mui/material/Snackbar';
-import Alert from '@mui/material/Alert';
-import Backdrop from '@mui/material/Backdrop';
-import CircularProgress from '@mui/material/CircularProgress';
-import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
+import { useForm,  } from '@formspree/react';
+
 const Contact = () => {
     const [state, handleSubmit] = useForm("xldjwjoy");
     const [msg,sendMsg] = useState("");

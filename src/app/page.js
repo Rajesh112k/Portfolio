@@ -22,7 +22,7 @@ export default function Home() {
           <div className="col-md-8">
             <div className="d-flex">
               <span className="line mr-5"></span>
-              <h1 className='text-white font-weight-bold'><span className="text-common">I'm Rajesh Kumar Reddy Avula. <br /></span>
+              <h1 className='text-white font-weight-bold'><span className="text-common">I am Rajesh Kumar Reddy Avula. <br /></span>
             <span>
             <TypeAnimation
       sequence={[

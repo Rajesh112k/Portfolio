@@ -5,6 +5,8 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import SchoolIcon from '@mui/icons-material/School';
+import { SiMinutemailer } from "react-icons/si";
+import { FaGithub } from "react-icons/fa";
 
 const About =() =>{
  
@@ -20,23 +22,30 @@ const About =() =>{
                     <div className="col part1">
                         <h2 className="text-white">PERSONAL INFOS</h2>
                         <div className="row">
-                            <div className="col">
+                            <div className="card col mr-3 mt-3 p-5">
+                                <div className="d-flex flex-column h-100 justify-content-center">
                                 <h4>First Name: <span>Rajesh Kumar Reddy</span></h4>
                                 <h4>Last Name: <span>Avula</span></h4>
                                 <h4>Age: <span>25</span></h4>
                                 <h4>Nationality: <span>Indian</span></h4>
-                                <h4>Freelance: <span>Available</span></h4>
+                                <h4>Freelance: <span>Available</span></h4></div> 
                             </div>
-                            <div className="col">
+                            <div className="card col mt-3 p-5">
                                 <h4>Address: <span>India</span></h4>
                                 <h4>phone: <span>+19303334205</span></h4>
-                                <h4>Email: <span>avula.rajesh.kumar.reddy@gmail.com</span></h4>
-                                <h4>github: <span>Indian</span></h4>
+                                <svg width="0" height="0">
+  <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stopColor="#00bcd4" />
+    <stop offset="100%" stopColor="#1565C0" />
+  </linearGradient>
+</svg>
+                                <h4>Email: <span className='d-inline'><a href="mailto:avula.rajesh.kumar.reddy@gmail.com" >Rajesh <SiMinutemailer style={{ fill: 'url(#grad)', fontSize: '20px', marginLeft: '5px' }}/></a></span></h4>
+                                <h4>github: <span className='d-inline'><a href="https://github.com/Rajesh112k" >Github <FaGithub style={{ fill: 'url(#grad)', fontSize: '20px', marginLeft: '5px' }} /> </a></span></h4>
                                 <h4>Languages: <span>Telugu, English, Hindi, Kannada</span></h4>
                             </div>
                         </div>
                         <br />
-                        <Button className="btn-common iconBtn font-weight-bold" disableRipple sx={{ textTransform: 'none' }}>
+                        <Button className="btn-common iconBtn font-weight-bold mb-5" disableRipple sx={{ textTransform: 'none' }}>
   DOWNLOAD CV 
   <span className="icon d-flex align-items-center justify-content-center">
     <FileDownloadOutlinedIcon />
@@ -108,7 +117,7 @@ const About =() =>{
                             // pathTransition: 'none',
                         
                             // Colors
-                            pathColor: `#fa5b0f`,
+                            pathColor: `#00bcd4`,
                             textColor: '#fff',
                             trailColor: '#252525',
                             backgroundColor: 'red',
@@ -136,7 +145,7 @@ const About =() =>{
                             // pathTransition: 'none',
                         
                             // Colors
-                            pathColor: `#fa5b0f`,
+                            pathColor: `#00bcd4`,
                             textColor: '#fff',
                             trailColor: '#252525',
                             backgroundColor: 'red',
@@ -164,7 +173,7 @@ const About =() =>{
                             // pathTransition: 'none',
                         
                             // Colors
-                            pathColor: `#fa5b0f`,
+                            pathColor: `#00bcd4`,
                             textColor: '#fff',
                             trailColor: '#252525',
                             backgroundColor: 'red',
@@ -192,7 +201,7 @@ const About =() =>{
                             // pathTransition: 'none',
                         
                             // Colors
-                            pathColor: `#fa5b0f`,
+                            pathColor: `#00bcd4`,
                             textColor: '#fff',
                             trailColor: '#252525',
                             backgroundColor: 'red',
@@ -220,7 +229,7 @@ const About =() =>{
                             // pathTransition: 'none',
                         
                             // Colors
-                            pathColor: `#fa5b0f`,
+                            pathColor: `#00bcd4`,
                             textColor: '#fff',
                             trailColor: '#252525',
                             backgroundColor: 'red',
@@ -248,7 +257,7 @@ const About =() =>{
                             // pathTransition: 'none',
                         
                             // Colors
-                            pathColor: `#fa5b0f`,
+                            pathColor: `#00bcd4`,
                             textColor: '#fff',
                             trailColor: '#252525',
                             backgroundColor: 'red',
@@ -276,7 +285,7 @@ const About =() =>{
                             // pathTransition: 'none',
                         
                             // Colors
-                            pathColor: `#fa5b0f`,
+                            pathColor: `#00bcd4`,
                             textColor: '#fff',
                             trailColor: '#252525',
                             backgroundColor: 'red',
@@ -304,7 +313,7 @@ const About =() =>{
                             // pathTransition: 'none',
                         
                             // Colors
-                            pathColor: `#fa5b0f`,
+                            pathColor: `#00bcd4`,
                             textColor: '#fff',
                             trailColor: '#252525',
                             backgroundColor: 'red',

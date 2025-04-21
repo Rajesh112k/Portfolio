@@ -1,12 +1,15 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DraftsIcon from '@mui/icons-material/Drafts';
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 import Button from '@mui/material/Button';
 import { FaFacebookF, FaYoutube, FaTwitter, FaLinkedin } from "react-icons/fa";
 import { BsFillSendFill } from "react-icons/bs";
 import { useForm } from '@formspree/react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 
 const Contact = () => {
   const [state, handleSubmit] = useForm("xldjwjoy");
@@ -20,10 +23,18 @@ const Contact = () => {
     );
   }
 
+  useEffect(() => {
+    AOS.init({
+      duration: 1200,
+      once: true, // animation triggers once when scrolled into view
+    });
+  }, []);
+  
+
   return (
     <section className="aboutPage contactPage">
       <div className="container">
-        <div className="d-flex">
+      <div className="d-flex" data-aos="fade-down">
           <h1 className="hd text-center m-auto">
             LET’S <span>CONNECT</span>
             <span className="title-bg" style={{ fontSize: '118px', top: '-38px' }}>
@@ -34,7 +45,7 @@ const Contact = () => {
 
         <div className="row mt-5 contactinfo">
           {/* Left Section */}
-          <div className="col-md-4 pr-md-5 mb-5 mb-md-0">
+          <div className="col-md-4 pr-md-5 mb-5 mb-md-0" data-aos="fade-right">
             <h3 className='text-white font-weight-bold mb-3'>We’d love to hear from you!</h3>
             <p className='text-white'>
               Whether you have a question, a business inquiry, or just want to say hi — my inbox is always open.
@@ -60,7 +71,7 @@ const Contact = () => {
 
             <div className="social-icons d-flex mt-4">
               {[FaFacebookF, FaTwitter, FaYoutube, FaLinkedin].map((Icon, i) => (
-                <Button key={i} className="mx-1 icon-btn" sx={{ minWidth: '40px', borderRadius: '50%', padding: '10px' }}>
+                <Button key={i} className="mx-1 icon-btn" data-aos="zoom-in" data-aos-delay={`${i * 100}`} sx={{ minWidth: '40px', borderRadius: '50%', padding: '10px' }}>
                   <Icon size={18} />
                 </Button>
               ))}
@@ -68,8 +79,8 @@ const Contact = () => {
           </div>
 
           {/* Right Section */}
-          <div className="col-md-8">
-            <form onSubmit={handleSubmit}>
+          <div className="col-md-8" data-aos="fade-left">
+          <form onSubmit={handleSubmit} data-aos="zoom-in">
               <div className="row">
                 <div className="col-md-6 mb-4">
                   <input type="text" name="name" id="name" placeholder='Your Name' className='input' required />

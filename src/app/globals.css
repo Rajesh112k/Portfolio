@@ -142,7 +142,7 @@ section {
   height: 5px;
   background-color: #64b5f6;
   position: relative;
-  top: 30px;
+  top: 10px;
   border-radius: 10px;
 }
 
@@ -285,7 +285,7 @@ section {
     border: 1px solid #64B5F6;
     margin-bottom: 20px;
     background-color: #fff;
-    color: #333;
+    color: #fff;
   }
 .contactPage form .input:focus{background: #3d3d3d;
     box-shadow: 0 0 0 2px #00bcd4;}

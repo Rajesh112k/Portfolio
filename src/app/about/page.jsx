@@ -7,14 +7,21 @@ import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import SchoolIcon from '@mui/icons-material/School';
 import { SiMinutemailer } from "react-icons/si";
 import { FaGithub } from "react-icons/fa";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
+import { SkillProgress } from './SkillProgress';
 
 const About =() =>{
+    useEffect(() => {
+        AOS.init({ duration: 1200, once: false });
+      }, []);
  
     return(
         <section className="aboutPage">
             <div className="container-fluid">
                 <div className="d-flex">
-                <h1 className="hd text-center m-auto">ABOUT <span>ME</span>
+                <h1 className="hd text-center m-auto" data-aos="fade-up">ABOUT <span>ME</span>
                 <span className="title-bg">resume</span>    </h1>
                 </div>
 
@@ -22,7 +29,7 @@ const About =() =>{
                     <div className="col part1">
                         <h2 className="text-white">PERSONAL INFOS</h2>
                         <div className="row">
-                            <div className="card col mr-3 mt-3 p-5">
+                        <div className="card col mr-3 mt-3 p-5" data-aos="fade-right">
                                 <div className="d-flex flex-column h-100 justify-content-center">
                                 <h4>First Name: <span>Rajesh Kumar Reddy</span></h4>
                                 <h4>Last Name: <span>Avula</span></h4>
@@ -30,7 +37,7 @@ const About =() =>{
                                 <h4>Nationality: <span>Indian</span></h4>
                                 <h4>Freelance: <span>Available</span></h4></div> 
                             </div>
-                            <div className="card col mt-3 p-5">
+                            <div className="card col mt-3 p-5" data-aos="fade-left">
                                 <h4>Address: <span>India</span></h4>
                                 <h4>phone: <span>+19303334205</span></h4>
                                 <svg width="0" height="0">
@@ -54,28 +61,28 @@ const About =() =>{
                     </div>
                     <div className="col part2">
     <div className="boxes">
-        <div className="box">
+    <div className="box" data-aos="zoom-in">
             <span className="count d-flex">2 <span className='ml-2'>+</span></span>
             <div className="d-flex mt-2">
                 <span className="line mr-3"></span>
                 <h4>YEARS OF INDUSTRY EXPERIENCE</h4>
             </div>
         </div>
-        <div className="box">
+        <div className="box" data-aos="zoom-in">
             <span className="count d-flex">5 <span className='ml-2'>+</span></span>
             <div className="d-flex mt-2">
                 <span className="line mr-3"></span>
                 <h4>MAJOR PROJECTS COMPLETED</h4>
             </div>
         </div>
-        <div className="box">
+        <div className="box" data-aos="zoom-in">
             <span className="count d-flex">10 <span className='ml-2'>+</span></span>
             <div className="d-flex mt-2">
                 <span className="line mr-3"></span>
                 <h4>PROGRAMMING LANGUAGES MASTERED</h4>
             </div>
         </div>
-        <div className="box">
+        <div className="box" data-aos="zoom-in">
             <span className="count d-flex">5 <span className='ml-2'>+</span></span>
             <div className="d-flex mt-2">
                 <span className="line mr-3"></span>
@@ -97,231 +104,16 @@ const About =() =>{
                     <h2 className="text-white text-center">MY SKILLS</h2>
 
                     <div className="row">
-                        <div className="col-md-3 d-flex flex-column">
-                        <CircularProgressbar value={75} text={`${75}%`} 
-                        className='counterspin'
-                        styles={buildStyles({
-                            // Rotation of path and trail, in number of turns (0-1)
-                            rotation: 0.25,
-                        
-                            // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
-                            strokeLinecap: 'butt',
-                        
-                            // Text size
-                            textSize: '16px',
-                        
-                            // How long animation takes to go from one percentage to another, in seconds
-                            pathTransitionDuration: 0.5,
-                        
-                            // Can specify path transition in more detail, or remove it entirely
-                            // pathTransition: 'none',
-                        
-                            // Colors
-                            pathColor: `#00bcd4`,
-                            textColor: '#fff',
-                            trailColor: '#252525',
-                            backgroundColor: 'red',
-                          })}/>;
-                          <br />
-                          <h4 className='text-white text-center m-auto'>PYTHON</h4>
-                        </div>
-                        <div className="col-md-3 d-flex flex-column">
-                        <CircularProgressbar value={85} text={`${85}%`} 
-                        className='counterspin'
-                        styles={buildStyles({
-                            // Rotation of path and trail, in number of turns (0-1)
-                            rotation: 0.25,
-                        
-                            // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
-                            strokeLinecap: 'butt',
-                        
-                            // Text size
-                            textSize: '16px',
-                        
-                            // How long animation takes to go from one percentage to another, in seconds
-                            pathTransitionDuration: 0.5,
-                        
-                            // Can specify path transition in more detail, or remove it entirely
-                            // pathTransition: 'none',
-                        
-                            // Colors
-                            pathColor: `#00bcd4`,
-                            textColor: '#fff',
-                            trailColor: '#252525',
-                            backgroundColor: 'red',
-                          })}/>;
-                          <br />
-                          <h4 className='text-white text-center m-auto'>REACT</h4>
-                        </div>
-                        <div className="col-md-3 d-flex flex-column">
-                        <CircularProgressbar value={80} text={`${80}%`} 
-                        className='counterspin'
-                        styles={buildStyles({
-                            // Rotation of path and trail, in number of turns (0-1)
-                            rotation: 0.25,
-                        
-                            // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
-                            strokeLinecap: 'butt',
-                        
-                            // Text size
-                            textSize: '16px',
-                        
-                            // How long animation takes to go from one percentage to another, in seconds
-                            pathTransitionDuration: 0.5,
-                        
-                            // Can specify path transition in more detail, or remove it entirely
-                            // pathTransition: 'none',
-                        
-                            // Colors
-                            pathColor: `#00bcd4`,
-                            textColor: '#fff',
-                            trailColor: '#252525',
-                            backgroundColor: 'red',
-                          })}/>;
-                          <br />
-                          <h4 className='text-white text-center m-auto'>REACT-NATIVE</h4>
-                        </div>
-                        <div className="col-md-3 d-flex flex-column">
-                        <CircularProgressbar value={70} text={`${70}%`} 
-                        className='counterspin'
-                        styles={buildStyles({
-                            // Rotation of path and trail, in number of turns (0-1)
-                            rotation: 0.25,
-                        
-                            // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
-                            strokeLinecap: 'butt',
-                        
-                            // Text size
-                            textSize: '16px',
-                        
-                            // How long animation takes to go from one percentage to another, in seconds
-                            pathTransitionDuration: 0.5,
-                        
-                            // Can specify path transition in more detail, or remove it entirely
-                            // pathTransition: 'none',
-                        
-                            // Colors
-                            pathColor: `#00bcd4`,
-                            textColor: '#fff',
-                            trailColor: '#252525',
-                            backgroundColor: 'red',
-                          })}/>;
-                          <br />
-                          <h4 className='text-white text-center m-auto'>KOTLIN</h4>
-                        </div>
-                        <div className="col-md-3 d-flex flex-column">
-                        <CircularProgressbar value={66} text={`${66}%`} 
-                        className='counterspin'
-                        styles={buildStyles({
-                            // Rotation of path and trail, in number of turns (0-1)
-                            rotation: 0.25,
-                        
-                            // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
-                            strokeLinecap: 'butt',
-                        
-                            // Text size
-                            textSize: '16px',
-                        
-                            // How long animation takes to go from one percentage to another, in seconds
-                            pathTransitionDuration: 0.5,
-                        
-                            // Can specify path transition in more detail, or remove it entirely
-                            // pathTransition: 'none',
-                        
-                            // Colors
-                            pathColor: `#00bcd4`,
-                            textColor: '#fff',
-                            trailColor: '#252525',
-                            backgroundColor: 'red',
-                          })}/>;
-                          <br />
-                          <h4 className='text-white text-center m-auto'>JAVA</h4>
-                        </div>
-                        <div className="col-md-3 d-flex flex-column">
-                        <CircularProgressbar value={66} text={`${66}%`} 
-                        className='counterspin'
-                        styles={buildStyles({
-                            // Rotation of path and trail, in number of turns (0-1)
-                            rotation: 0.25,
-                        
-                            // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
-                            strokeLinecap: 'butt',
-                        
-                            // Text size
-                            textSize: '16px',
-                        
-                            // How long animation takes to go from one percentage to another, in seconds
-                            pathTransitionDuration: 0.5,
-                        
-                            // Can specify path transition in more detail, or remove it entirely
-                            // pathTransition: 'none',
-                        
-                            // Colors
-                            pathColor: `#00bcd4`,
-                            textColor: '#fff',
-                            trailColor: '#252525',
-                            backgroundColor: 'red',
-                          })}/>;
-                          <br />
-                          <h4 className='text-white text-center m-auto'>JAVASCRIPT</h4>
-                        </div>
-                        <div className="col-md-3 d-flex flex-column">
-                        <CircularProgressbar value={75} text={`${75}%`} 
-                        className='counterspin'
-                        styles={buildStyles({
-                            // Rotation of path and trail, in number of turns (0-1)
-                            rotation: 0.25,
-                        
-                            // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
-                            strokeLinecap: 'butt',
-                        
-                            // Text size
-                            textSize: '16px',
-                        
-                            // How long animation takes to go from one percentage to another, in seconds
-                            pathTransitionDuration: 0.5,
-                        
-                            // Can specify path transition in more detail, or remove it entirely
-                            // pathTransition: 'none',
-                        
-                            // Colors
-                            pathColor: `#00bcd4`,
-                            textColor: '#fff',
-                            trailColor: '#252525',
-                            backgroundColor: 'red',
-                          })}/>;
-                          <br />
-                          <h4 className='text-white text-center m-auto'>SQL</h4>
-                        </div>
-                        <div className="col-md-3 d-flex flex-column">
-                        <CircularProgressbar value={95} text={`${95}%`} 
-                        className='counterspin'
-                        styles={buildStyles({
-                            // Rotation of path and trail, in number of turns (0-1)
-                            rotation: 0.25,
-                        
-                            // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
-                            strokeLinecap: 'butt',
-                        
-                            // Text size
-                            textSize: '16px',
-                        
-                            // How long animation takes to go from one percentage to another, in seconds
-                            pathTransitionDuration: 0.5,
-                        
-                            // Can specify path transition in more detail, or remove it entirely
-                            // pathTransition: 'none',
-                        
-                            // Colors
-                            pathColor: `#00bcd4`,
-                            textColor: '#fff',
-                            trailColor: '#252525',
-                            backgroundColor: 'red',
-                          })}/>;
-                          <br />
-                          <h4 className='text-white text-center m-auto'>HTML</h4>
-                        </div>
-                    </div>
+  <SkillProgress label="PYTHON" targetValue={75} />
+  <SkillProgress label="REACT" targetValue={85} />
+  <SkillProgress label="REACT-NATIVE" targetValue={80} />
+  <SkillProgress label="KOTLIN" targetValue={70} />
+  <SkillProgress label="Java" targetValue={70} />
+  <SkillProgress label="JAVASCRIPT" targetValue={66} />
+  <SkillProgress label="SQL" targetValue={70} />
+  <SkillProgress label="HTML" targetValue={70} />
+</div>
+
 
 
                 </div>
@@ -334,11 +126,12 @@ const About =() =>{
 
 
                 <div className="experienceSection">
-    <h2 className="text-white text-center">Experience and Education</h2>
+                <h2 className="text-white text-center" data-aos="zoom-in">Experience and Education</h2>
+
 
     <div className="row">
         <div className="col-md-6">
-            <div className="box d-flex">
+        <div className="box d-flex" data-aos="fade-right">
                 <div className="left">
                     <span className="icon rounded-circle d-flex align-items-center justify-content-center">
                         <BusinessCenterIcon />
@@ -353,7 +146,7 @@ const About =() =>{
                     </p>
                 </div>
             </div>
-            <div className="box d-flex">
+            <div className="box d-flex" data-aos="fade-right" data-aos-delay="100">
                 <div className="left">
                     <span className="icon rounded-circle d-flex align-items-center justify-content-center">
                         <BusinessCenterIcon />
@@ -368,7 +161,7 @@ const About =() =>{
                     </p>
                 </div>
             </div>
-            <div className="box d-flex">
+            <div className="box d-flex" data-aos="fade-right" data-aos-delay="200">
                 <div className="left">
                     <span className="icon rounded-circle d-flex align-items-center justify-content-center">
                         <BusinessCenterIcon />
@@ -386,7 +179,7 @@ const About =() =>{
         </div>
 
         <div className="col-md-6 d-flex flex-column justify-content-center">
-            <div className="box d-flex">
+        <div className="box d-flex" data-aos="fade-left">
                 <div className="left">
                     <span className="icon rounded-circle d-flex align-items-center justify-content-center">
                         <SchoolIcon />
@@ -401,7 +194,7 @@ const About =() =>{
                     </p>
                 </div>
             </div>
-            <div className="box d-flex">
+            <div className="box d-flex" data-aos="fade-left" data-aos-delay="100">
                 <div className="left">
                     <span className="icon rounded-circle d-flex align-items-center justify-content-center">
                         <SchoolIcon />

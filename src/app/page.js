@@ -31,20 +31,22 @@ export default function Home() {
       </div>
 
       <div className="col-md-8 col-sm-12 text-wrapper" data-aos="fade-left">
-        <div className="d-flex align-items-center">
+        <div className="d-flex ">
           <span className="line" data-aos="zoom-in" data-aos-delay="200"></span>
           <h1 className="text-white font-weight-bold" data-aos="fade-up" data-aos-delay="300">
             <span className="text-common">I am Rajesh Kumar Reddy Avula.</span>
             <br />
             <TypeAnimation
               sequence={[
-                'WEB DESIGNER',
-                1000,
-                'WEB DEVELOPER',
-                1000,
                 'FULL STACK WEB DEVELOPER',
                 1000,
+                'WEB DESIGNER',
+                1000,
+                'SOFTWARE ENGINEER',
+                1000,
                 'REACT DEVELOPER',
+                1000,
+                'MACHINE LEARNING ENTHUSIAST',
                 1000,
               ]}
               wrapper="span"
@@ -75,8 +77,8 @@ export default function Home() {
             className="btn-common iconBtn ml-4 font-weight-bold"
             disableRipple
             sx={{ textTransform: 'none' }}
-            download="RajeshKumarReddy_CV.pdf"
-            href="/RajeshKumarReddy_CV.pdf"
+            download="Rajesh_kumar_cv.pdf"
+            href="/Rajesh_kumar_cv.pdf"
           >
             DOWNLOAD CV
             <span className="icon d-flex align-items-center justify-content-center">

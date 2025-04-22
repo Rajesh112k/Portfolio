@@ -39,7 +39,7 @@ const About =() =>{
                             </div>
                             <div className="card col mt-3 p-5" data-aos="fade-left">
                                 <h4>Address: <span>India</span></h4>
-                                <h4>phone: <span>+19303334205</span></h4>
+                                <h4>phone: <span>+1 9303334205</span></h4>
                                 <svg width="0" height="0">
   <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
     <stop offset="0%" stopColor="#00bcd4" />
@@ -52,7 +52,8 @@ const About =() =>{
                             </div>
                         </div>
                         <br />
-                        <Button className="btn-common iconBtn font-weight-bold mb-5" disableRipple sx={{ textTransform: 'none' }}>
+                        <Button className="btn-common iconBtn font-weight-bold mb-5" disableRipple sx={{ textTransform: 'none' }} download="Rajesh_kumar_cv.pdf"
+            href="/Rajesh_kumar_cv.pdf">
   DOWNLOAD CV 
   <span className="icon d-flex align-items-center justify-content-center">
     <FileDownloadOutlinedIcon />

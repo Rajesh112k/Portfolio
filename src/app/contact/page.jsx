@@ -38,7 +38,7 @@ const Contact = () => {
           <h1 className="hd text-center m-auto">
             LET’S <span>CONNECT</span>
             <span className="title-bg" style={{ fontSize: '118px', top: '-38px' }}>
-              CONTACT US
+              CONTACT
             </span>
           </h1>
         </div>
@@ -89,7 +89,7 @@ const Contact = () => {
                   <input type="email" name="email" id="email" placeholder='Your Email' className='input' required />
                 </div>
                 <div className="col-md-6 mb-4">
-                  <input type="text" name="subject" id="subject" placeholder='Subject' className='input' />
+                  <input type="text" name="subject" id="subject" placeholder='Subject' className='input' required/>
                 </div>
                 <div className="col-md-6 mb-4">
                   <input type="text" name="company" id="company" placeholder='Company (Optional)' className='input' />

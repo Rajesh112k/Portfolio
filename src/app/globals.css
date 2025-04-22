@@ -13,7 +13,9 @@ section {
 }
 
 .text-common {
-  color: #64b5f6;
+  background: linear-gradient(to bottom right, #00bcd4, #1565C0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .btn-common {
@@ -29,7 +31,8 @@ section {
   position: absolute;
   top: 0;
   right: 0;
-  background: #64b5f6;
+  background: linear-gradient(to bottom right, #00bcd4, #1565C0);
+  
   border-radius: 100%;
   width: 45px !important;
   height: 45px !important;
@@ -50,7 +53,8 @@ section {
   content: '';
   width: 0%;
   height: 100%;
-  background: #64b5f6;
+  background: linear-gradient(to bottom right, #00bcd4, #1565C0);
+ 
   position: absolute !important;
   top: 0;
   right: 0;
@@ -85,11 +89,12 @@ section {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #64b5f6;
+  background: linear-gradient(to bottom right, #00bcd4, #1565C0);
+  
 }
 
 ::-webkit-scrollbar {
-  width: 10px !important;
+  width: 5px !important;
 }
 
 .container-fluid {
@@ -140,15 +145,17 @@ section {
   display: block;
   width: 150px;
   height: 5px;
-  background-color: #64b5f6;
+  background: linear-gradient(to bottom right, #00bcd4, #1565C0);
   position: relative;
-  top: 10px;
+  top: 30px;
+  margin-right: 50px !important;
   border-radius: 10px;
 }
 
 .homePage .wrapper h1 {
-  font-size: 50px !important;
+  font-size: 45px !important;
   font-weight: 900 !important;
+  margin-bottom: 20px !important;
 }
 
 .homePage .wrapper p {
@@ -184,7 +191,9 @@ section {
 
 .aboutWrapper .part2 .boxes{display: flex; flex-wrap: wrap; gap: 20px;}
 .aboutWrapper .part2 .boxes .box{width: 47%; height: 200px; border: 1px solid rgba(255,255,255,0.2); border-radius: 7px; padding: 20px;}
-.aboutWrapper .part2 .boxes .box .count{color:#64B5F6; font-size: 40px; font-weight: 900;}
+.aboutWrapper .part2 .boxes .box .count{background: linear-gradient(to bottom right, #00bcd4, #1565C0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; font-size: 40px; font-weight: 900;}
 .aboutWrapper .part2 .boxes .box .count span{ font-size: 18px; font-weight: 600; position: relative; top: 10px;}
 .aboutWrapper .part2 .boxes .box h4{font-size: 21px; font-weight: 400; color:#fff; opacity: 0.8;}
 .aboutWrapper .part2 .boxes .box .line{display: block; background-color: #fff; opacity: 0.8; width: 40px; height: 1px; position: relative; top: 5px}
@@ -220,7 +229,7 @@ section {
 .experienceSection .box h4{font-size: 18px; color:#fff !important; font-display: 500;}
 .experienceSection .box h4 span{font-size: 15px; opacity: 0.8;}
 .experienceSection .box p{font-weight: 200; opacity: 0.7;}
-.experienceSection .box .icon{background: #64B5F6; width: 40px; height: 40px; position: relative; transition: all 0.3s ease-in-out}
+.experienceSection .box .icon{  background: linear-gradient(to bottom right, #00bcd4, #1565C0); width: 40px; height: 40px; position: relative; transition: all 0.3s ease-in-out}
 .experienceSection .box .icon::after{content: ''; width: 1px; height: 85px; background-color: rgba(255,255,255,0.1); position: absolute; top: 100%; left:50%}
 .experienceSection .box .icon svg{color: #fff !important}
 .experienceSection .box:hover .icon{background-color: rgba(255,255,255,0.2)}
@@ -404,6 +413,10 @@ section {
     }
     .portfolioPage .wrapper .box {
       width: 100%;
+    }
+    .homePage .wrapper .line{
+      text-align: center;
+      margin: auto !important;
     }
   }
   

@@ -1,8 +1,8 @@
-'use client';
-import { useEffect, useState } from 'react';
-import { useInView } from 'react-intersection-observer';
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
-import 'react-circular-progressbar/dist/styles.css';
+"use client";
+import { useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 export const SkillProgress = ({ label, targetValue }) => {
   const [value, setValue] = useState(0);
@@ -37,12 +37,12 @@ export const SkillProgress = ({ label, targetValue }) => {
         className="counterspin"
         styles={buildStyles({
           rotation: 0.25,
-          strokeLinecap: 'butt',
-          textSize: '16px',
+          strokeLinecap: "butt",
+          textSize: "16px",
           pathTransitionDuration: 0.5,
-          pathColor: '#00bcd4',
-          textColor: '#fff',
-          trailColor: '#252525',
+          pathColor: "#00bcd4",
+          textColor: "#fff",
+          trailColor: "#252525",
         })}
       />
       <br />

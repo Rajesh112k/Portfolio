@@ -1,97 +1,99 @@
 "use client";
-import Button from '@mui/material/Button';
 import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import userImage from '../assets/rajesh_kumar_photo1.jpg';
 import Image from 'next/image';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
+import { ArrowForward, FileDownload } from '@mui/icons-material';
 import { TypeAnimation } from 'react-type-animation';
 import Link from 'next/link';
 
 export default function Home() {
   useEffect(() => {
     AOS.init({
-      duration: 1000, // animation duration
-      once: true,     // whether animation should happen only once
+      duration: 800,
+      once: true,
+      easing: 'ease-in-out-quart'
     });
   }, []);
   
   return (
-    <>
-      <section className="homePage">
-  <div className="container-fluid">
-    <div className="row align-items-center wrapper">
+    <section className="hero-section">
+      <div className="container">
+        <div className="hero-content">
+          
+          {/* Image Column */}
+          <div className="hero-image" data-aos="fade-right" data-aos-delay="100">
+            <div className="image-wrapper">
+              <Image 
+                src={userImage} 
+                alt="Rajesh Kumar Reddy Avula" 
+                fill
+                className="profile-image"
+                priority
+              />
+              <div className="image-glow"></div>
+            </div>
+          </div>
 
-      <div className="col-md-4 col-sm-12" data-aos="fade-right">
-        <div className="imgWrap">
-          <Image src={userImage} alt="Rajesh Kumar" />
+          {/* Text Column */}
+          <div className="hero-text" data-aos="fade-left" data-aos-delay="200">
+            <div className="title-group">
+              <div className="accent-line" data-aos="zoom-in" data-aos-delay="300"></div>
+              <h1 className="main-title">
+                <span className="gradient-text">I am Rajesh Kumar Reddy Avula.</span>
+                <br />
+                <TypeAnimation
+                  sequence={[
+                    'FULL STACK DEVELOPER',
+                    1000,
+                    'SOFTWARE ENGINEER',
+                    1000,
+                    'REACT SPECIALIST',
+                    1000,
+                    'CLOUD ARCHITECT',
+                    1000,
+                    'ML ENTHUSIAST',
+                    1000
+                  ]}
+                  wrapper="span"
+                  speed={50}
+                  className="typing-text"
+                  repeat={Infinity}
+                />
+              </h1>
+            </div>
+
+            <p className="hero-description" data-aos="fade-up" data-aos-delay="400">
+              I am a passionate <span className="highlight">Full Stack Developer</span> with {' '}
+              <span className="highlight">3+ years</span> of experience building scalable web applications. 
+              I specialize in modern JavaScript frameworks and cloud-native architectures, delivering 
+              high-performance solutions with elegant user interfaces.
+            </p>
+
+            <div className="hero-actions" data-aos="fade-up" data-aos-delay="500">
+              <Link href="/about" className="action-btn primary">
+                ABOUT ME
+                <span className="btn-icon">
+                  <ArrowForward />
+                </span>
+              </Link>
+
+              <a 
+                href="/Rajesh_kumar_cv.pdf" 
+                download="Rajesh_Kumar_CV.pdf"
+                className="action-btn secondary"
+              >
+                DOWNLOAD CV
+                <span className="btn-icon">
+                  <FileDownload />
+                </span>
+              </a>
+            </div>
+          </div>
+
         </div>
       </div>
-
-      <div className="col-md-8 col-sm-12 text-wrapper" data-aos="fade-left">
-        <div className="d-flex ">
-          <span className="line" data-aos="zoom-in" data-aos-delay="200"></span>
-          <h1 className="text-white font-weight-bold" data-aos="fade-up" data-aos-delay="300">
-            <span className="text-common">I am Rajesh Kumar Reddy Avula.</span>
-            <br />
-            <TypeAnimation
-              sequence={[
-                'FULL STACK WEB DEVELOPER',
-                1000,
-                'WEB DESIGNER',
-                1000,
-                'SOFTWARE ENGINEER',
-                1000,
-                'REACT DEVELOPER',
-                1000,
-                'MACHINE LEARNING ENTHUSIAST',
-                1000,
-              ]}
-              wrapper="span"
-              speed={50}
-              style={{ display: 'inline-block' }}
-              repeat={Infinity}
-            />
-          </h1>
-        </div>
-
-        <p className="text-white" data-aos="fade-up" data-aos-delay="500">
-          I am a passionate Full Stack and Software Developer with{' '}
-          <b style={{ color: '#64B5F6', fontWeight: 'bold' }}>three</b> years of experience in building scalable web and software applications. Proficient in JavaScript, React, Node.js, and Python, I enjoy creating seamless user experiences and optimizing backend performance.
-        </p>
-
-        <br />
-        <div className="d-flex align-items-center btns" data-aos="fade-up" data-aos-delay="600">
-          <Link href="/about">
-            <Button className="btn-common iconBtn font-weight-bold" disableRipple sx={{ textTransform: 'none' }}>
-              ABOUT ME
-              <span className="icon d-flex align-items-center justify-content-center">
-                <ArrowForwardIcon />
-              </span>
-            </Button>
-          </Link>
-
-          <Button
-            className="btn-common iconBtn ml-4 font-weight-bold"
-            disableRipple
-            sx={{ textTransform: 'none' }}
-            download="Rajesh_kumar_cv.pdf"
-            href="/Rajesh_kumar_cv.pdf"
-          >
-            DOWNLOAD CV
-            <span className="icon d-flex align-items-center justify-content-center">
-              <FileDownloadOutlinedIcon />
-            </span>
-          </Button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-    </>
+    </section>
   );
 }

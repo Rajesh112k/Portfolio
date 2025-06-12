@@ -19,93 +19,79 @@ const Nav = () => {
 
   return (
     <nav>
-      <div className="hamburger-menu mb-5 pb-5">
+      <div className="hamburger-menu">
         <MenuIcon onClick={toggleDrawer(true)} />
       </div>
 
-      <Drawer anchor="right" open={openDrawer} onClose={toggleDrawer(false)} className='mt-5'>
-        <ul>
-          <li>
-            <Link href="/">
-              <Button className="btn-common iconBtn font-weight-bold" disableRipple sx={{ textTransform: 'none' }}>
-                <span className="title mr-4">Home</span> 
-                <span className="icon d-flex align-items-center justify-content-center">
-                  <HomeOutlinedIcon />
-                </span>
-              </Button>
-            </Link>
-          </li>
-          <li>
-            <Link href="/about">
-              <Button className="btn-common iconBtn font-weight-bold" disableRipple sx={{ textTransform: 'none' }}>
-                <span className="title mr-4">About Me</span> 
-                <span className="icon d-flex align-items-center justify-content-center">
-                  <Person2OutlinedIcon />
-                </span>
-              </Button>
-            </Link>
-          </li>
-          <li>
-            <Link href="/portfolio">
-              <Button className="btn-common iconBtn font-weight-bold" disableRipple sx={{ textTransform: 'none' }}>
-                <span className="title mr-4">Portfolio</span> 
-                <span className="icon d-flex align-items-center justify-content-center">
-                  <BusinessCenterOutlinedIcon />
-                </span>
-              </Button>
-            </Link>
-          </li>
-          <li>
-            <Link href="/contact">
-              <Button className="btn-common iconBtn font-weight-bold" disableRipple sx={{ textTransform: 'none' }}>
-                <span className="title mr-4">Contact Me</span> 
-                <span className="icon d-flex align-items-center justify-content-center">
-                  <EmailOutlinedIcon />
-                </span>
-              </Button>
-            </Link>
-          </li>
-        </ul>
+      <Drawer anchor="right" open={openDrawer} onClose={toggleDrawer(false)}>
+        <div className="drawer-content">
+          <ul>
+            <li>
+              <Link href="/">
+                <Button className="nav-button" disableRipple sx={{ textTransform: 'none' }}>
+                  <HomeOutlinedIcon className="nav-icon" />
+                  <span className="nav-text">Home</span>
+                </Button>
+              </Link>
+            </li>
+            <li>
+              <Link href="/about">
+                <Button className="nav-button" disableRipple sx={{ textTransform: 'none' }}>
+                  <Person2OutlinedIcon className="nav-icon" />
+                  <span className="nav-text">About Me</span>
+                </Button>
+              </Link>
+            </li>
+            <li>
+              <Link href="/portfolio">
+                <Button className="nav-button" disableRipple sx={{ textTransform: 'none' }}>
+                  <BusinessCenterOutlinedIcon className="nav-icon" />
+                  <span className="nav-text">Portfolio</span>
+                </Button>
+              </Link>
+            </li>
+            <li>
+              <Link href="/contact">
+                <Button className="nav-button" disableRipple sx={{ textTransform: 'none' }}>
+                  <EmailOutlinedIcon className="nav-icon" />
+                  <span className="nav-text">Contact Me</span>
+                </Button>
+              </Link>
+            </li>
+          </ul>
+        </div>
       </Drawer>
 
       <ul className="desktop-nav">
         <li>
           <Link href="/">
-            <Button className="btn-common iconBtn font-weight-bold" disableRipple sx={{ textTransform: 'none' }}>
-              <span className="title">Home</span> 
-              <span className="icon d-flex align-items-center justify-content-center">
-                <HomeOutlinedIcon />
-              </span>
+            <Button className="nav-button" disableRipple sx={{ textTransform: 'none' }}>
+              <HomeOutlinedIcon className="nav-icon" />
+              <span className="nav-text">Home</span>
             </Button>
           </Link>
         </li>
         <li>
           <Link href="/about">
-            <Button className="btn-common iconBtn font-weight-bold" disableRipple sx={{ textTransform: 'none' }}>
-              <span className="title">ABOUT ME</span> 
-              <span className="icon d-flex align-items-center justify-content-center">
-                <Person2OutlinedIcon />
-              </span>
+            <Button className="nav-button" disableRipple sx={{ textTransform: 'none' }}>
+              <Person2OutlinedIcon className="nav-icon" />
+              <span className="nav-text">About Me</span>
             </Button>
           </Link>
         </li>
         <li>
           <Link href="/portfolio">
-            <Button className="btn-common iconBtn font-weight-bold" disableRipple sx={{ textTransform: 'none' }}>
-              <span className="title">Portfolio</span> 
-              <span className="icon d-flex align-items-center justify-content-center">
-                <BusinessCenterOutlinedIcon />
-              </span>
+            <Button className="nav-button" disableRipple sx={{ textTransform: 'none' }}>
+              <BusinessCenterOutlinedIcon className="nav-icon" />
+              <span className="nav-text">Portfolio</span>
             </Button>
           </Link>
         </li>
         <li>
           <Link href="/contact">
-            <Button className="btn-common iconBtn font-weight-bold" disableRipple sx={{ textTransform: 'none' }}>
-              <span className="title">Contact ME</span> 
-              <span className="icon d-flex align-items-center justify-content-center">
-                <EmailOutlinedIcon />
-              </span>
+            <Button className="nav-button" disableRipple sx={{ textTransform: 'none' }}>
+              <EmailOutlinedIcon className="nav-icon" />
+              <span className="nav-text">Contact Me</span>
             </Button>
           </Link>
         </li>

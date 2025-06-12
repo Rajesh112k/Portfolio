@@ -1,14 +1,15 @@
 "use client"
 import Image from 'next/image';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import project1 from '../../assets/project1.png';
-import project2 from '../../assets/project2.png';
-import project3 from '../../assets/project3.png';
+import project3 from '../../assets/project2.png';
+import project2 from '../../assets/project3.png';
 import project4 from '../../assets/project4.png';
-import LinkIcon from '@mui/icons-material/Link';
 import { Code, Star, GitHub } from '@mui/icons-material';
+import { ChevronLeft, ChevronRight } from 'react-feather';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+
 
 const projects = [
   {
@@ -119,34 +120,87 @@ const Portfolio = () => {
       easing: 'ease-in-out-quart'
     });
   }, []);
+  
+  const [activeProject, setActiveProject] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const scrollRef = useRef(null);
+  const detailsRef = useRef(null);
+
+  const scroll = (direction) => {
+    if (scrollRef.current) {
+      const { scrollLeft, clientWidth } = scrollRef.current;
+      const scrollTo = direction === 'left' 
+        ? Math.max(0, scrollLeft - clientWidth / 2)
+        : Math.min(scrollLeft + clientWidth / 2, scrollRef.current.scrollWidth - clientWidth);
+      
+      scrollRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' });
+    }
+  };
+
+  const handleProjectChange = (index) => {
+    if (isAnimating || index === activeProject) return;
+    
+    setIsAnimating(true);
+    setActiveProject(index);
+    
+    if (scrollRef.current) {
+      const projectElement = scrollRef.current.children[index];
+      if (projectElement) {
+        const containerWidth = scrollRef.current.clientWidth;
+        const projectLeft = projectElement.offsetLeft;
+        const projectWidth = projectElement.offsetWidth;
+        const scrollTo = projectLeft - (containerWidth / 2) + (projectWidth / 2);
+        
+        scrollRef.current.scrollTo({
+          left: scrollTo,
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    setTimeout(() => setIsAnimating(false), 300);
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'ArrowLeft') {
+        handleProjectChange((activeProject - 1 + projects.length) % projects.length);
+      } else if (e.key === 'ArrowRight') {
+        handleProjectChange((activeProject + 1) % projects.length);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [activeProject]);
 
   return (
     <div className="portfolio-container">
       {/* Hero Section */}
       <section className="portfolio-hero">
-        <div className="container-fluid">
+        <div className="container">
           <div className="hero-content">
-            <h1 className="hd" data-aos="fade-down">
-              MY <span>PORTFOLIO</span>
-              <span className="title-bg">CREATIONS</span>
+            <h1 className="hero-title" data-aos="fade-down">
+              MY <span className="gradient-text">PORTFOLIO</span>
+              <span className="title-bg">Works</span>
             </h1>
             
-            <div className="hero-text" data-aos="fade-up" data-aos-delay="200">
+            <div className="hero-text" data-aos="fade-up">
               <p>
                 I'm a <span className="highlight">Software Engineer</span> specializing in full-stack development with expertise in React, 
                 React Native, and cloud technologies. My work combines elegant design with robust architecture 
                 to deliver exceptional user experiences.
               </p>
               <div className="hero-stats">
-                <div className="stat-item">
-                  <span className="stat-number">4+</span>
+                <div className="stat-item" data-aos="fade-up" data-aos-delay="100">
+                  <span className="stat-number">2+</span>
                   <span className="stat-label">Years Experience</span>
                 </div>
-                <div className="stat-item">
-                  <span className="stat-number">15+</span>
+                <div className="stat-item" data-aos="fade-up" data-aos-delay="200">
+                  <span className="stat-number">10+</span>
                   <span className="stat-label">Projects</span>
                 </div>
-                <div className="stat-item">
+                <div className="stat-item" data-aos="fade-up" data-aos-delay="300">
                   <span className="stat-number">4</span>
                   <span className="stat-label">Certifications</span>
                 </div>
@@ -158,8 +212,8 @@ const Portfolio = () => {
 
       {/* Projects Section */}
       <section className="portfolio-projects">
-        <div className="container-fluid">
-          <div className="section-header" data-aos="fade-right">
+        <div className="container">
+          <div className="section-header" data-aos="fade">
             <h2 className="section-title">
               <span className="icon"><Code /></span>
               Featured Projects
@@ -169,38 +223,75 @@ const Portfolio = () => {
             </p>
           </div>
           
-          <div className="projects-column">
-            {projects.map((proj, index) => (
-              <div 
-                className="project-item" 
-                key={index}
-                data-aos="fade-up"
-                data-aos-delay={index * 100}
-              >
+          <div className="projects-carousel-container">
+            <button 
+              className="carousel-arrow left" 
+              onClick={() => scroll('left')}
+              aria-label="Scroll projects left"
+              data-aos="fade-right"
+            >
+              <ChevronLeft size={24} />
+            </button>
+            
+            <div className="projects-carousel-wrapper">
+              <div className="projects-carousel" ref={scrollRef}>
+                {projects.map((proj, index) => (
+                  <div
+                    key={index}
+                    className={`project-title ${index === activeProject ? 'active' : ''} ${isAnimating ? 'no-click' : ''}`}
+                    onClick={() => handleProjectChange(index)}
+                    aria-current={index === activeProject}
+                    data-aos="fade-up"
+                    data-aos-delay={index * 100}
+                  >
+                    {proj.title}
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            <button 
+              className="carousel-arrow right" 
+              onClick={() => scroll('right')}
+              aria-label="Scroll projects right"
+              data-aos="fade-left"
+            >
+              <ChevronRight size={24} />
+            </button>
+          </div>
+          
+          <div 
+            className={`project-details-container ${isAnimating ? 'fade-out' : 'fade-in'}`}
+            ref={detailsRef}
+            key={activeProject}
+            data-aos="fade-up"
+          >
+            <div className="project-item">
+              <div className="project-content-wrapper">
                 <div className="project-content">
                   <div className="project-header">
-                    <h3>{proj.title}</h3>
+                    <h3>{projects[activeProject].title}</h3>
                     <a 
-                      href={proj.link} 
+                      href={projects[activeProject].link} 
                       target="_blank" 
                       rel="noreferrer"
                       className="project-link"
-                      aria-label={`View ${proj.title} on GitHub`}
+                      aria-label={`View ${projects[activeProject].title} on GitHub`}
                     >
                       <GitHub className="github-icon" />
                       <span>View Code</span>
                     </a>
                   </div>
                   
-                  <p className="project-description">{proj.description}</p>
+                  <p className="project-description">{projects[activeProject].description}</p>
                   
                   <div className="project-features">
                     <h4 className="features-title">
                       <span className="highlight">Key Features</span>
                     </h4>
                     <ul>
-                      {proj.features.map((feature, i) => (
-                        <li key={i}>
+                      {projects[activeProject].features.map((feature, i) => (
+                        <li key={i} data-aos="fade-up" data-aos-delay={i * 50}>
                           <span className="feature-icon">▹</span>
                           <span>{feature}</span>
                         </li>
@@ -213,35 +304,37 @@ const Portfolio = () => {
                       <span className="highlight">Technologies</span>
                     </h4>
                     <div className="tech-tags">
-                      {proj.tech.map((t, i) => (
-                        <span className="tech-tag" key={i}>{t}</span>
+                      {projects[activeProject].tech.map((t, i) => (
+                        <span className="tech-tag" key={i} data-aos="fade-up" data-aos-delay={i * 50}>{t}</span>
                       ))}
                     </div>
                   </div>
                 </div>
-                
+              </div>
+              
+              <div className="project-media-wrapper">
                 <div className="project-media">
                   <div className="image-container">
                     <Image
-                      src={proj.image}
-                      alt={proj.title}
-                      layout="fill"
-                      objectFit="cover"
+                      src={projects[activeProject].image}
+                      alt={projects[activeProject].title}
+                      fill
                       className="project-image"
+                      priority
                     />
                   </div>
                   <div className="image-overlay"></div>
                 </div>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Skills Section */}
       <section className="portfolio-skills">
-        <div className="container-fluid">
-          <div className="section-header" data-aos="fade-right">
+        <div className="container">
+          <div className="section-header" data-aos="fade">
             <h2 className="section-title">
               <span className="icon"><Star /></span>
               Technical Expertise
@@ -251,7 +344,7 @@ const Portfolio = () => {
             </p>
           </div>
           
-          <div className="skills-visual">
+          <div className="skills-visual" data-aos="fade-up">
             {skills.map((skill, index) => (
               <div className="skill-item" key={index} data-aos="fade-up" data-aos-delay={index * 50}>
                 <span className="skill-name">{skill.name}</span>
@@ -259,6 +352,7 @@ const Portfolio = () => {
                   <div 
                     className="skill-progress" 
                     style={{ width: `${skill.level}%` }}
+                    data-level={skill.level}
                   ></div>
                 </div>
                 <span className="skill-percent">{skill.level}%</span>
@@ -270,8 +364,8 @@ const Portfolio = () => {
 
       {/* Certifications Section */}
       <section className="portfolio-certifications">
-        <div className="container-fluid">
-          <div className="section-header" data-aos="fade-right">
+        <div className="container">
+          <div className="section-header" data-aos="fade">
             <h2 className="section-title">
               <span className="icon"><Star /></span>
               Certifications
@@ -301,7 +395,7 @@ const Portfolio = () => {
 
       {/* CTA Section */}
       <section className="portfolio-cta">
-        <div className="container-fluid">
+        <div className="container">
           <div className="cta-content" data-aos="zoom-in">
             <h2>Let's Build Something Exceptional</h2>
             <p>

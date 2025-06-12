@@ -1,117 +1,149 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import DraftsIcon from '@mui/icons-material/Drafts';
-import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
-import Button from '@mui/material/Button';
-import { FaFacebookF, FaYoutube, FaTwitter, FaLinkedin } from "react-icons/fa";
-import { BsFillSendFill } from "react-icons/bs";
+import React, { useEffect } from 'react';
 import { useForm } from '@formspree/react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-
+import { Drafts, ContactPhone, Send } from '@mui/icons-material';
+import { FaFacebookF, FaYoutube, FaTwitter, FaLinkedin } from "react-icons/fa";
+import { Button } from '@mui/material';
 
 const Contact = () => {
   const [state, handleSubmit] = useForm("xldjwjoy");
 
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: true,
+      easing: 'ease-in-out-quart'
+    });
+  }, []);
+
   if (state.succeeded) {
-    setTimeout(() => window.location.reload(), 3000);
     return (
-      <h4 className='text-center text-white' style={{ paddingTop: '250px' }}>
-        Thanks for reaching out! We'll be in touch shortly.
-      </h4>
+      <div className="success-message" data-aos="fade-up">
+        <h3>Thanks for reaching out!</h3>
+        <p>We'll be in touch shortly.</p>
+      </div>
     );
   }
 
-  useEffect(() => {
-    AOS.init({
-      duration: 1200,
-      once: true, // animation triggers once when scrolled into view
-    });
-  }, []);
-  
-
   return (
-    <section className="aboutPage contactPage">
+    <section className="contact-section" id="contact">
       <div className="container">
-      <div className="d-flex" data-aos="fade-down">
-          <h1 className="hd text-center m-auto">
-            LET’S <span>CONNECT</span>
-            <span className="title-bg" style={{ fontSize: '118px', top: '-38px' }}>
-              CONTACT
-            </span>
+        {/* Section Header */}
+        <div className="section-header" data-aos="fade-down">
+          <h1 className="section-title">
+            LET'S <span>CONNECT</span>
+            <span className="title-bg">CONTACT</span>
           </h1>
         </div>
 
-        <div className="row mt-5 contactinfo">
-          {/* Left Section */}
-          <div className="col-md-4 pr-md-5 mb-5 mb-md-0" data-aos="fade-right">
-            <h3 className='text-white font-weight-bold mb-3'>We’d love to hear from you!</h3>
-            <p className='text-white'>
-              Whether you have a question, a business inquiry, or just want to say hi — my inbox is always open.
+        <div className="contact-content">
+          {/* Left Column - Contact Info */}
+          <div className="contact-info" data-aos="fade-right">
+            <h3>We'd love to hear from you!</h3>
+            <p>
+              Whether you have a question, a business inquiry, or just want to say hi — 
+              my inbox is always open.
             </p>
 
-            <div className="info">
-              <div className="d-flex align-items-center info mt-4 w-100">
-              <DraftsIcon />
-              <div className="pl-3 d-flex flex-column">
-                <span className="text-white-50">EMAIL</span>
-                <label className="text-white">avula.rajesh.kumar.reddy@gmail.com</label>
+            <div className="contact-details">
+              <div className="detail-item">
+                <Drafts className="detail-icon" />
+                <div className="detail-text">
+                  <span>EMAIL</span>
+                  <p>avula.rajesh.kumar.reddy@gmail.com</p>
+                </div>
+              </div>
+
+              <div className="detail-item">
+                <ContactPhone className="detail-icon" />
+                <div className="detail-text">
+                  <span>PHONE</span>
+                  <p>+1 930-333-4205</p>
+                </div>
               </div>
             </div>
 
-            <div className="d-flex align-items-center info mt-3 mb-4 w-100">
-              <ContactPhoneIcon />
-              <div className="pl-3 d-flex flex-column">
-                <span className="text-white-50">PHONE</span>
-                <label className="text-white">+1 930-333-4205</label>
-              </div>
-            </div>
-            </div>
-
-            <div className="social-icons d-flex mt-4">
-              {[FaFacebookF, FaTwitter, FaYoutube, FaLinkedin].map((Icon, i) => (
-                <Button key={i} className="mx-1 icon-btn" data-aos="zoom-in" data-aos-delay={`${i * 100}`} sx={{ minWidth: '40px', borderRadius: '50%', padding: '10px' }}>
-                  <Icon size={18} />
+            <div className="social-links">
+              {[
+                { icon: FaFacebookF, name: "Facebook" },
+                { icon: FaTwitter, name: "Twitter" },
+                { icon: FaYoutube, name: "YouTube" },
+                { icon: FaLinkedin, name: "LinkedIn" }
+              ].map((social, i) => (
+                <Button 
+                  key={i}
+                  className="social-icon"
+                  aria-label={social.name}
+                  data-aos="zoom-in"
+                  data-aos-delay={i * 100}
+                >
+                  <social.icon />
                 </Button>
               ))}
             </div>
           </div>
 
-          {/* Right Section */}
-          <div className="col-md-8" data-aos="fade-left">
-          <form onSubmit={handleSubmit} data-aos="zoom-in">
-              <div className="row">
-                <div className="col-md-6 mb-4">
-                  <input type="text" name="name" id="name" placeholder='Your Name' className='input' required />
+          {/* Right Column - Contact Form */}
+          <div className="contact-form" data-aos="fade-left">
+            <form onSubmit={handleSubmit}>
+              <div className="form-grid">
+                <div className="form-group">
+                  <input 
+                    type="text" 
+                    name="name" 
+                    id="name" 
+                    placeholder="Your Name" 
+                    required 
+                  />
                 </div>
-                <div className="col-md-6 mb-4">
-                  <input type="email" name="email" id="email" placeholder='Your Email' className='input' required />
+                <div className="form-group">
+                  <input 
+                    type="email" 
+                    name="email" 
+                    id="email" 
+                    placeholder="Your Email" 
+                    required 
+                  />
                 </div>
-                <div className="col-md-6 mb-4">
-                  <input type="text" name="subject" id="subject" placeholder='Subject' className='input' required/>
+                <div className="form-group">
+                  <input 
+                    type="text" 
+                    name="subject" 
+                    id="subject" 
+                    placeholder="Subject" 
+                    required 
+                  />
                 </div>
-                <div className="col-md-6 mb-4">
-                  <input type="text" name="company" id="company" placeholder='Company (Optional)' className='input' />
+                <div className="form-group">
+                  <input 
+                    type="text" 
+                    name="company" 
+                    id="company" 
+                    placeholder="Company (Optional)" 
+                  />
                 </div>
-                <div className="col-md-12 mb-4">
-                  <textarea placeholder='Your Message' className='input' id='message' name='message' rows="6" required />
-                </div>
-                <div className="col-md-12">
-                  <Button
-                    className="btn-common iconBtn font-weight-bold"
-                    disableRipple
-                    sx={{ textTransform: 'none' }}
-                    type="submit"
-                    disabled={state.submitting}
-                  >
-                    SUBMIT
-                    <span className="icon d-flex align-items-center justify-content-center ml-2">
-                      <BsFillSendFill />
-                    </span>
-                  </Button>
+                <div className="form-group full-width">
+                  <textarea 
+                    id="message" 
+                    name="message" 
+                    rows="6" 
+                    placeholder="Your Message" 
+                    required 
+                  />
                 </div>
               </div>
+
+              <Button
+                className="submit-btn"
+                type="submit"
+                disabled={state.submitting}
+                endIcon={<Send />}
+              >
+                {state.submitting ? 'Sending...' : 'Send Message'}
+              </Button>
             </form>
           </div>
         </div>

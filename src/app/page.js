@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import userImage from '../assets/rajesh_kumar_photo1.jpg';
+import userImage from '../assets/rajesh_kumar_photo1.jpeg';
 import Image from 'next/image';
 import { ArrowForward, FileDownload } from '@mui/icons-material';
 import { TypeAnimation } from 'react-type-animation';
@@ -15,6 +15,11 @@ export default function Home() {
       once: true,
       easing: 'ease-in-out-quart'
     });
+    
+    // Clean up AOS when component unmounts
+    return () => {
+      AOS.refresh();
+    };
   }, []);
   
   return (
@@ -22,8 +27,13 @@ export default function Home() {
       <div className="container">
         <div className="hero-content">
           
-          {/* Image Column */}
-          <div className="hero-image" data-aos="fade-right" data-aos-delay="100">
+          {/* Image Column - Moved to right on desktop, top on mobile */}
+          <div 
+            className="hero-image" 
+            data-aos="fade-up" 
+            data-aos-delay="100"
+            data-aos-offset="100"
+          >
             <div className="image-wrapper">
               <Image 
                 src={userImage} 
@@ -31,17 +41,27 @@ export default function Home() {
                 fill
                 className="profile-image"
                 priority
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
               <div className="image-glow"></div>
             </div>
           </div>
 
           {/* Text Column */}
-          <div className="hero-text" data-aos="fade-left" data-aos-delay="200">
+          <div 
+            className="hero-text" 
+            data-aos="fade-up" 
+            data-aos-delay="200"
+            data-aos-offset="100"
+          >
             <div className="title-group">
-              <div className="accent-line" data-aos="zoom-in" data-aos-delay="300"></div>
+              <div 
+                className="accent-line" 
+                data-aos="zoom-in" 
+                data-aos-delay="300"
+              ></div>
               <h1 className="main-title">
-                <span className="gradient-text">I am Rajesh Kumar Reddy Avula.</span>
+                <span className="gradient-text">Rajesh Kumar Reddy Avula</span>
                 <br />
                 <TypeAnimation
                   sequence={[
@@ -60,22 +80,35 @@ export default function Home() {
                   speed={50}
                   className="typing-text"
                   repeat={Infinity}
+                  style={{ display: 'inline-block' }}
                 />
               </h1>
             </div>
 
-            <p className="hero-description" data-aos="fade-up" data-aos-delay="400">
+            <p 
+              className="hero-description" 
+              data-aos="fade-up" 
+              data-aos-delay="400"
+            >
               I am a passionate <span className="highlight">Full Stack Developer</span> with {' '}
-              <span className="highlight">3+ years</span> of experience building scalable web applications. 
+              <span className="highlight">2+ years</span> of experience building scalable web applications. 
               I specialize in modern JavaScript frameworks and cloud-native architectures, delivering 
               high-performance solutions with elegant user interfaces.
             </p>
 
-            <div className="hero-actions" data-aos="fade-up" data-aos-delay="500">
-              <Link href="/about" className="action-btn primary">
+            <div 
+              className="hero-actions" 
+              data-aos="fade-up" 
+              data-aos-delay="500"
+            >
+              <Link 
+                href="/about" 
+                className="action-btn primary"
+                aria-label="Learn more about me"
+              >
                 ABOUT ME
                 <span className="btn-icon">
-                  <ArrowForward />
+                  <ArrowForward fontSize="small" />
                 </span>
               </Link>
 
@@ -83,10 +116,11 @@ export default function Home() {
                 href="/Rajesh_kumar_cv.pdf" 
                 download="Rajesh_Kumar_CV.pdf"
                 className="action-btn secondary"
+                aria-label="Download my CV"
               >
                 DOWNLOAD CV
                 <span className="btn-icon">
-                  <FileDownload />
+                  <FileDownload fontSize="small" />
                 </span>
               </a>
             </div>

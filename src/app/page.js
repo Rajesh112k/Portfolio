@@ -51,7 +51,7 @@ export default function Home() {
           <div 
             className="hero-text" 
             data-aos="fade-up" 
-            data-aos-delay="200"
+            data-aos-delay="100"
             data-aos-offset="100"
           >
             <div className="title-group">
@@ -88,7 +88,7 @@ export default function Home() {
             <p 
               className="hero-description" 
               data-aos="fade-up" 
-              data-aos-delay="400"
+              data-aos-delay="100"
             >
               I am a passionate <span className="highlight">Full Stack Developer</span> with {' '}
               <span className="highlight">2+ years</span> of experience building scalable web applications. 
@@ -99,7 +99,7 @@ export default function Home() {
             <div 
               className="hero-actions" 
               data-aos="fade-up" 
-              data-aos-delay="500"
+              data-aos-delay="120"
             >
               <Link 
                 href="/about" 

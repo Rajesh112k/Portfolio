@@ -23,7 +23,7 @@ const Contact = () => {
     return (
       <div className="success-message" data-aos="fade-up">
         <h3>Thanks for reaching out!</h3>
-        <p>We'll be in touch shortly.</p>
+        <p>I will be in touch shortly.</p>
       </div>
     );
   }
@@ -34,7 +34,6 @@ const Contact = () => {
         {/* Section Header */}
         <div className="section-header" data-aos="fade-down">
           <h1 className="section-title">
-            LET'S <span>CONNECT</span>
             <span className="title-bg">CONTACT</span>
           </h1>
         </div>
@@ -42,7 +41,7 @@ const Contact = () => {
         <div className="contact-content">
           {/* Left Column - Contact Info */}
           <div className="contact-info" data-aos="fade-right">
-            <h3>We'd love to hear from you!</h3>
+            <h3>I would love to hear from you!</h3>
             <p>
               Whether you have a question, a business inquiry, or just want to say hi — 
               my inbox is always open.

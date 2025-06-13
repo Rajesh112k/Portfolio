@@ -145,12 +145,27 @@ const About = () => {
 
         <div className="timeline-section">
           <div className="timeline-column">
+
+          <div className="timeline-item" data-aos="fade-right">
+              <div className="timeline-icon">
+                <BusinessCenter />
+              </div>
+              <div className="timeline-content">
+                <span className="timeline-date">2025-PRESENT</span>
+                <h4>Graduate Research Assistant - Indiana University</h4>
+                <p>
+                Built data pipelines and graph workflows using Neo4j, GraphFrames, and TigerGraph for large datasets. Improved performance with algorithmic optimization and sped up GeoAI data annotation using deep learning models.
+                </p>
+              </div>
+            </div>
+
+
             <div className="timeline-item" data-aos="fade-right">
               <div className="timeline-icon">
                 <BusinessCenter />
               </div>
               <div className="timeline-content">
-                <span className="timeline-date">2023-PRESENT</span>
+                <span className="timeline-date">2024-2025</span>
                 <h4>Graduate Teaching Assistant - Indiana University</h4>
                 <p>
                   Assisted students in software engineering concepts through lab sessions, project debugging, 
@@ -173,7 +188,12 @@ const About = () => {
               </div>
             </div>
 
-            <div className="timeline-item" data-aos="fade-right" data-aos-delay="200">
+            
+          </div>
+
+          <div className="timeline-column">
+
+          <div className="timeline-item" data-aos="fade-right" data-aos-delay="200">
               <div className="timeline-icon">
                 <BusinessCenter />
               </div>
@@ -186,9 +206,8 @@ const About = () => {
                 </p>
               </div>
             </div>
-          </div>
 
-          <div className="timeline-column">
+
             <div className="timeline-item" data-aos="fade-left">
               <div className="timeline-icon">
                 <School />

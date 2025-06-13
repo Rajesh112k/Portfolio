@@ -5,6 +5,9 @@ import project1 from '../../assets/project1.png';
 import project3 from '../../assets/project2.png';
 import project2 from '../../assets/project3.png';
 import project4 from '../../assets/project4.png';
+import project5 from '../../assets/project5.png';
+import aws from '../../assets/aws.png';
+import oracle from '../../assets/oracle.jpg';
 import { Code, Star, GitHub } from '@mui/icons-material';
 import { ChevronLeft, ChevronRight } from 'react-feather';
 import AOS from 'aos';
@@ -68,6 +71,22 @@ const projects = [
       'Data export capabilities'
     ]
   },
+  {
+    title: 'Vybr - Ecommerce Platform',
+    image: project5,
+    link: 'https://github.com/Rajesh112k/Vybr',
+    tech: ['React.js', 'Node.js', 'Firebase', 'Stripe API', 'Redux'],
+    description: 'A modern e-commerce platform featuring seamless shopping experience with secure payments, personalized recommendations, and real-time inventory management.',
+    features: [
+      'Responsive design for all devices',
+      'Secure Stripe payment integration',
+      'User authentication & profile management',
+      'Product search and filtering system',
+      'Shopping cart with persistent storage',
+      'Admin dashboard for inventory management',
+      'Product review and rating system'
+    ]
+  }
 ];
 
 const skills = [
@@ -89,25 +108,25 @@ const certifications = [
   {
     name: 'AWS Certified Developer-Associate',
     issuer: 'Amazon Web Services',
-    date: '2023',
+    date: '2025',
     icon: 'aws'
   },
   {
     name: 'Oracle Java SE 8 Associate',
     issuer: 'Oracle',
-    date: '2022',
+    date: '2023',
     icon: 'java'
   },
   {
     name: 'Oracle Database SQL Certified',
     issuer: 'Oracle',
-    date: '2022',
+    date: '2023',
     icon: 'database'
   },
   {
     name: 'Oracle Responsys Marketing',
     issuer: 'Oracle',
-    date: '2021',
+    date: '2023',
     icon: 'marketing'
   }
 ];
@@ -241,8 +260,7 @@ const Portfolio = () => {
                     className={`project-title ${index === activeProject ? 'active' : ''} ${isAnimating ? 'no-click' : ''}`}
                     onClick={() => handleProjectChange(index)}
                     aria-current={index === activeProject}
-                    data-aos="fade-up"
-                    data-aos-delay={index * 100}
+                    
                   >
                     {proj.title}
                   </div>
@@ -254,7 +272,7 @@ const Portfolio = () => {
               className="carousel-arrow right" 
               onClick={() => scroll('right')}
               aria-label="Scroll projects right"
-              data-aos="fade-left"
+              
             >
               <ChevronRight size={24} />
             </button>
@@ -264,7 +282,7 @@ const Portfolio = () => {
             className={`project-details-container ${isAnimating ? 'fade-out' : 'fade-in'}`}
             ref={detailsRef}
             key={activeProject}
-            data-aos="fade-up"
+            
           >
             <div className="project-item">
               <div className="project-content-wrapper">
@@ -321,6 +339,10 @@ const Portfolio = () => {
                       fill
                       className="project-image"
                       priority
+                      style={{
+                        objectFit: 'cover', // This makes it behave like background-size: cover
+                        objectPosition: 'center' // Optional: centers the image
+                      }}
                     />
                   </div>
                   <div className="image-overlay"></div>
@@ -334,7 +356,7 @@ const Portfolio = () => {
       {/* Skills Section */}
       <section className="portfolio-skills">
         <div className="container">
-          <div className="section-header" data-aos="fade">
+          <div className="section-header" >
             <h2 className="section-title">
               <span className="icon"><Star /></span>
               Technical Expertise
@@ -346,7 +368,7 @@ const Portfolio = () => {
           
           <div className="skills-visual" data-aos="fade-up">
             {skills.map((skill, index) => (
-              <div className="skill-item" key={index} data-aos="fade-up" data-aos-delay={index * 50}>
+              <div className="skill-item" key={index} >
                 <span className="skill-name">{skill.name}</span>
                 <div className="skill-bar">
                   <div 
@@ -363,35 +385,55 @@ const Portfolio = () => {
       </section>
 
       {/* Certifications Section */}
-      <section className="portfolio-certifications">
-        <div className="container">
-          <div className="section-header" data-aos="fade">
-            <h2 className="section-title">
-              <span className="icon"><Star /></span>
-              Certifications
-            </h2>
-            <p className="section-subtitle">
-              Validated expertise through industry-recognized certifications
-            </p>
-          </div>
+      {/* Certifications Section */}
+<section className="portfolio-certifications">
+  <div className="container">
+    <div className="section-header" data-aos="fade">
+      <h2 className="section-title">
+        <span className="icon"><Star /></span>
+        Certifications
+      </h2>
+      <p className="section-subtitle">
+        Validated expertise through industry-recognized certifications
+      </p>
+    </div>
+    
+    <div className="certs-grid">
+      {certifications.map((cert, index) => (
+        <div 
+          className="cert-card" 
+          key={index}
           
-          <div className="certs-grid">
-            {certifications.map((cert, index) => (
-              <div 
-                className="cert-card" 
-                key={index}
-                data-aos="fade-up"
-                data-aos-delay={index * 100}
-              >
-                <div className={`cert-badge ${cert.icon}`}></div>
-                <h3>{cert.name}</h3>
-                <p className="cert-issuer">{cert.issuer}</p>
-                <p className="cert-date">{cert.date}</p>
-              </div>
-            ))}
+        >
+          <div className="cert-badge">
+            {cert.issuer === 'Amazon Web Services' ? (
+              <Image 
+                src={aws} 
+                alt="AWS Certified Developer-Associate" 
+                width={80}
+                height={80}
+                className="cert-image"
+              />
+            ) : cert.issuer === 'Oracle' ? (
+              <Image 
+                src={oracle} 
+                alt="Oracle Certified" 
+                width={80}
+                height={80}
+                className="cert-image"
+              />
+            ) : (
+              <div className={`default-icon ${cert.icon}`}></div>
+            )}
           </div>
+          <h3>{cert.name}</h3>
+          <p className="cert-issuer">{cert.issuer}</p>
+          <p className="cert-date">{cert.date}</p>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* CTA Section */}
       <section className="portfolio-cta">

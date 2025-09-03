@@ -85,7 +85,7 @@ const About = () => {
             <p>Years of Industry Experience</p>
           </div>
           <div className="stat-card" data-aos="zoom-in" data-aos-delay="100">
-            <h3>10+</h3>
+            <h3>11+</h3>
             <p>Major Projects Completed</p>
           </div>
           <div className="stat-card" data-aos="zoom-in" data-aos-delay="200">
